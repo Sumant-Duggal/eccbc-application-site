@@ -1,0 +1,567 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superdesign | The Design Agent</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --accent: #ff4500;
+            --card: #111111;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: white;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes float-hand-left {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        @keyframes float-hand-right {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(20px) rotate(-2deg); }
+        }
+
+        .animate-float-left {
+            animation: float-hand-left 12s ease-in-out infinite;
+        }
+
+        .animate-float-right {
+            animation: float-hand-right 14s ease-in-out infinite;
+        }
+
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            pointer-events: none;
+            opacity: 0.05;
+            mix-blend-mode: overlay;
+            background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+        }
+
+        .parallax-card-up {
+            transform: translateY(var(--scroll-offset-up, 0px));
+        }
+
+        .parallax-card-down {
+            transform: translateY(var(--scroll-offset-down, 0px));
+        }
+
+        .spotlight-grid {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 36px 36px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .reveal,
+            .parallax-card-up,
+            .parallax-card-down,
+            .animate-float-left,
+            .animate-float-right {
+                animation: none !important;
+                transition: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen bg-[#050505] selection:bg-[#FF4500] selection:text-white">
+        <div class="noise-overlay"></div>
+
+        <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-8 bg-transparent">
+            <div class="container mx-auto px-6 flex items-center justify-between gap-6">
+                <a href="#top" id="nav-logo-link" class="text-2xl font-bold tracking-tighter font-serif">
+                    SumantDuggal
+                </a>
+
+                <div class="hidden md:flex items-center space-x-8"></div>
+
+                <a href="./Sumant%20Duggal.pdf" id="nav-cta-link" download="Sumant Duggal.pdf" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-medium bg-white text-black hover:scale-105 hover:bg-gray-100 transition-all duration-300">
+                    <span>CV</span>
+                    <iconify-icon icon="lucide:download" class="text-base"></iconify-icon>
+                </a>
+            </div>
+        </nav>
+
+        <main id="top">
+            <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20 bg-[#050505]">
+                <div class="absolute inset-0 z-0 pointer-events-none select-none">
+                    <div class="absolute top-0 left-0 w-full h-full opacity-60 mix-blend-screen">
+                        <img src="https://framerusercontent.com/images/9zvwRJAavKKacVyhFCwHyXW1U.png?width=1536&height=1024" alt="Atmosphere" class="w-full h-full object-cover object-center opacity-80">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#050505] z-10"></div>
+                </div>
+
+                <div class="absolute -left-[10%] top-[-10%] md:left-[-5%] md:top-[-15%] w-[50vw] md:w-[40vw] max-w-[800px] z-10 pointer-events-none mix-blend-hard-light opacity-80 animate-float-left">
+                    <img src="https://framerusercontent.com/images/KNhiA5A2ykNYqNkj04Hk6BVg5A.png?width=1540&height=1320" alt="Hand reaching" class="w-full h-auto object-contain">
+                </div>
+
+                <div class="absolute right-[2%] bottom-[-5%] md:right-[5%] md:bottom-[-2%] w-[38vw] md:w-[32vw] max-w-[550px] z-10 pointer-events-none animate-float-right mix-blend-screen">
+                    <img src="./bottle_right.png" alt="Floating bottle" class="w-full h-auto object-contain saturate-110 brightness-105 rotate-[-25deg]">
+                </div>
+
+                <div class="container mx-auto px-6 relative z-20 text-center flex flex-col items-center justify-center h-full">
+                    <div id="hero-content-wrapper" class="max-w-4xl mx-auto will-change-transform">
+                        <div class="reveal">
+                            <h1 class="text-5xl md:text-7xl font-medium leading-[1.1] tracking-tight mb-6 text-[#ffe0e0] mix-blend-overlay font-serif" style="text-shadow: 0 0 12px rgba(255,255,255,0.71);">
+                                Driving <br>
+                                <span class="italic font-light text-[#ffe0e0]">Liquid Growth</span>
+                            </h1>
+                        </div>
+
+                        <div class="reveal" style="transition-delay: 200ms;">
+                            <p class="text-base md:text-lg text-[#ffe0e0]/90 max-w-lg mx-auto mb-16 font-light tracking-wide leading-relaxed mix-blend-overlay" style="text-shadow: 0 0 12px rgba(255,255,255,0.71);">
+                                Bridging commercial strategy and operational execution through data, analytics, and digital transformation
+                            </p>
+                        </div>
+
+                        <div class="reveal flex flex-col items-center gap-6" style="transition-delay: 400ms;">
+                            <a href="#works" class="relative group cursor-pointer">
+                                <div class="absolute inset-0 bg-[#FF4500]/20 blur-xl rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
+                                <div class="relative border border-white/20 bg-white/5 backdrop-blur-sm px-6 py-2 rounded-full flex items-center gap-3 text-xs md:text-sm text-white/80 uppercase tracking-widest hover:bg-white/10 transition-colors duration-300">
+                                    <span>Scroll for more</span>
+                                </div>
+                            </a>
+
+                            <div class="text-[10px] md:text-xs text-white/40 uppercase tracking-widest mt-8 font-mono text-center leading-relaxed">
+                                Customer retention improved | Install growth accelerated | 120+ field technicians optimised | $5M digital platform launched
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="works" class="py-40 relative overflow-hidden">
+                <div class="container mx-auto px-6 relative z-10">
+                    <div class="reveal mb-32">
+                        <h2 class="text-5xl md:text-7xl text-center font-serif">
+                            Aligned to <br>
+                            <span class="italic">what matters</span>
+                        </h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                        <div class="parallax-card-down">
+                            <article class="reveal bg-[#FF4500] rounded-3xl p-8 md:p-10 min-h-[34rem] flex flex-col shadow-2xl hover:shadow-[0_20px_50px_rgba(255,69,0,0.3)] transition-all duration-500 group cursor-pointer">
+                                <div class="flex justify-between items-start mb-8">
+                                    <div class="w-12 h-12 rounded-full bg-black/10 flex items-center justify-center group-hover:rotate-45 transition-transform duration-500">
+                                        <iconify-icon icon="lucide:star" class="text-black text-2xl"></iconify-icon>
+                                    </div>
+                                    <span class="text-black font-medium text-sm border border-black/20 px-3 py-1 rounded-full">01</span>
+                                </div>
+
+                                <div class="space-y-6">
+                                    <div>
+                                        <p class="text-[10px] uppercase tracking-[0.3em] text-black/50 mb-3">What you're looking for</p>
+                                        <h3 class="text-3xl md:text-4xl text-black leading-tight tracking-tight font-serif">
+                                            Digital transformation and system reliability
+                                        </h3>
+                                    </div>
+
+                                    <div>
+                                        <p class="text-[10px] uppercase tracking-[0.3em] text-black/50 mb-3">Where I've demonstrated it</p>
+                                        <p class="text-black/75 text-base leading-relaxed mb-5">
+                                            Reliable digital systems matter when operational decisions depend on speed, consistency, and visibility.
+                                        </p>
+                                        <ul class="space-y-3 text-black/80 text-sm md:text-[15px] leading-relaxed">
+                                            <li>Migrated 5+ Excel workflows to Azure Data Factory and Power BI, cutting processing time by 60%.</li>
+                                            <li>Built reporting pipelines that improved scalability, reliability, and proactive budget oversight.</li>
+                                            <li>Launched DraftVision, a $5M digital platform for modernizing on-premise operations.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="w-full h-px bg-black/10 mt-8"></div>
+                            </article>
+                        </div>
+
+                        <div class="parallax-card-up md:mt-10 xl:mt-16">
+                            <article class="reveal bg-[#111] border border-white/10 rounded-3xl p-8 md:p-10 min-h-[34rem] flex flex-col shadow-2xl group cursor-pointer hover:border-[#FF4500]/50 transition-all duration-500" style="transition-delay: 80ms;">
+                                <div class="flex justify-between items-start mb-8">
+                                    <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                                        <iconify-icon icon="lucide:activity" class="text-white text-2xl"></iconify-icon>
+                                    </div>
+                                    <span class="text-white/50 font-medium text-sm border border-white/10 px-3 py-1 rounded-full">02</span>
+                                </div>
+
+                                <div class="space-y-6">
+                                    <div>
+                                        <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">What you're looking for</p>
+                                        <h3 class="text-3xl md:text-4xl text-white leading-tight tracking-tight font-serif">
+                                            Analytical and problem-solving skills
+                                        </h3>
+                                    </div>
+
+                                    <div>
+                                        <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Where I've demonstrated it</p>
+                                        <p class="text-gray-400 text-base leading-relaxed mb-5">
+                                            Strong operational decisions come from analysis that exposes friction and points clearly to action.
+                                        </p>
+                                        <ul class="space-y-3 text-gray-300 text-sm md:text-[15px] leading-relaxed">
+                                            <li>Built an 81% accuracy churn prediction model that reduced attrition by 3%.</li>
+                                            <li>Developed a sales simulation model that influenced investment decisions and annual planning.</li>
+                                            <li>Used data-led restructuring to improve technician deployment efficiency by 7%.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="w-full h-px bg-white/10 mt-8"></div>
+                            </article>
+                        </div>
+
+                        <div class="parallax-card-down">
+                            <article class="reveal bg-[#FF4500] rounded-3xl p-8 md:p-10 min-h-[34rem] flex flex-col shadow-2xl hover:shadow-[0_20px_50px_rgba(255,69,0,0.3)] transition-all duration-500 group cursor-pointer" style="transition-delay: 160ms;">
+                                <div class="flex justify-between items-start mb-8">
+                                    <div class="w-12 h-12 rounded-full bg-black/10 flex items-center justify-center group-hover:rotate-45 transition-transform duration-500">
+                                        <iconify-icon icon="lucide:gauge" class="text-black text-2xl"></iconify-icon>
+                                    </div>
+                                    <span class="text-black font-medium text-sm border border-black/20 px-3 py-1 rounded-full">03</span>
+                                </div>
+
+                                <div class="space-y-6">
+                                    <div>
+                                        <p class="text-[10px] uppercase tracking-[0.3em] text-black/50 mb-3">What you're looking for</p>
+                                        <h3 class="text-3xl md:text-4xl text-black leading-tight tracking-tight font-serif">
+                                            Metrics, logs and monitoring tools
+                                        </h3>
+                                    </div>
+
+                                    <div>
+                                        <p class="text-[10px] uppercase tracking-[0.3em] text-black/50 mb-3">Where I've demonstrated it</p>
+                                        <p class="text-black/75 text-base leading-relaxed mb-5">
+                                            Visibility improves execution when performance data is live, trusted, and easy to act on.
+                                        </p>
+                                        <ul class="space-y-3 text-black/80 text-sm md:text-[15px] leading-relaxed">
+                                            <li>Designed real-time performance dashboards across core commercial metrics.</li>
+                                            <li>Built KPI and market share tracking dashboards across 30+ markets.</li>
+                                            <li>Created centralized hitlist and pricing dashboards for site-level prioritization.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="w-full h-px bg-black/10 mt-8"></div>
+                            </article>
+                        </div>
+
+                        <div class="parallax-card-up xl:-mt-4">
+                            <article class="reveal bg-[#111] border border-white/10 rounded-3xl p-8 md:p-10 min-h-[34rem] flex flex-col shadow-2xl group cursor-pointer hover:border-[#FF4500]/50 transition-all duration-500" style="transition-delay: 240ms;">
+                                <div class="flex justify-between items-start mb-8">
+                                    <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                                        <iconify-icon icon="lucide:bot" class="text-white text-2xl"></iconify-icon>
+                                    </div>
+                                    <span class="text-white/50 font-medium text-sm border border-white/10 px-3 py-1 rounded-full">04</span>
+                                </div>
+
+                                <div class="space-y-6">
+                                    <div>
+                                        <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">What you're looking for</p>
+                                        <h3 class="text-3xl md:text-4xl text-white leading-tight tracking-tight font-serif">
+                                            AIOps and AI-enabled automation
+                                        </h3>
+                                    </div>
+
+                                    <div>
+                                        <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Where I've demonstrated it</p>
+                                        <p class="text-gray-400 text-base leading-relaxed mb-5">
+                                            Automation is most valuable when it reduces friction on the ground and sharpens operational response.
+                                        </p>
+                                        <ul class="space-y-3 text-gray-300 text-sm md:text-[15px] leading-relaxed">
+                                            <li>Integrated image recognition into field operations, improving productivity by 32%.</li>
+                                            <li>Developed automated workflows for near real-time KPI tracking.</li>
+                                            <li>Applied machine learning models to guide commercial and operational decisions.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="w-full h-px bg-white/10 mt-8"></div>
+                            </article>
+                        </div>
+
+                        <div class="parallax-card-down xl:mt-12">
+                            <article class="reveal bg-[#FF4500] rounded-3xl p-8 md:p-10 min-h-[34rem] flex flex-col shadow-2xl hover:shadow-[0_20px_50px_rgba(255,69,0,0.3)] transition-all duration-500 group cursor-pointer" style="transition-delay: 320ms;">
+                                <div class="flex justify-between items-start mb-8">
+                                    <div class="w-12 h-12 rounded-full bg-black/10 flex items-center justify-center group-hover:rotate-45 transition-transform duration-500">
+                                        <iconify-icon icon="lucide:line-chart" class="text-black text-2xl"></iconify-icon>
+                                    </div>
+                                    <span class="text-black font-medium text-sm border border-black/20 px-3 py-1 rounded-full">05</span>
+                                </div>
+
+                                <div class="space-y-6">
+                                    <div>
+                                        <p class="text-[10px] uppercase tracking-[0.3em] text-black/50 mb-3">What you're looking for</p>
+                                        <h3 class="text-3xl md:text-4xl text-black leading-tight tracking-tight font-serif">
+                                            Translating technical insights into business value
+                                        </h3>
+                                    </div>
+
+                                    <div>
+                                        <p class="text-[10px] uppercase tracking-[0.3em] text-black/50 mb-3">Where I've demonstrated it</p>
+                                        <p class="text-black/75 text-base leading-relaxed mb-5">
+                                            Technical work matters when it changes cost, revenue, execution quality, and leadership decisions.
+                                        </p>
+                                        <ul class="space-y-3 text-black/80 text-sm md:text-[15px] leading-relaxed">
+                                            <li>Delivered weekly CAPEX analysis that drove 35% cost optimization.</li>
+                                            <li>Turned analytics into commercial actions that supported record installation volumes.</li>
+                                            <li>Built tools that improved revenue growth, productivity, and operational decision speed.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="w-full h-px bg-black/10 mt-8"></div>
+                            </article>
+                        </div>
+
+                        <div class="parallax-card-up md:mt-10 xl:mt-0">
+                            <article class="reveal bg-[#111] border border-white/10 rounded-3xl p-8 md:p-10 min-h-[34rem] flex flex-col shadow-2xl group cursor-pointer hover:border-[#FF4500]/50 transition-all duration-500" style="transition-delay: 400ms;">
+                                <div class="flex justify-between items-start mb-8">
+                                    <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                                        <iconify-icon icon="lucide:messages-square" class="text-white text-2xl"></iconify-icon>
+                                    </div>
+                                    <span class="text-white/50 font-medium text-sm border border-white/10 px-3 py-1 rounded-full">06</span>
+                                </div>
+
+                                <div class="space-y-6">
+                                    <div>
+                                        <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">What you're looking for</p>
+                                        <h3 class="text-3xl md:text-4xl text-white leading-tight tracking-tight font-serif">
+                                            Strong presentation and communication skills
+                                        </h3>
+                                    </div>
+
+                                    <div>
+                                        <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Where I've demonstrated it</p>
+                                        <p class="text-gray-400 text-base leading-relaxed mb-5">
+                                            Cross-functional transformation only lands when the message is clear to operators, analysts, and leadership.
+                                        </p>
+                                        <ul class="space-y-3 text-gray-300 text-sm md:text-[15px] leading-relaxed">
+                                            <li>Regularly presented performance insights and CAPEX analysis to senior executives.</li>
+                                            <li>Led cross-functional rollouts of dashboards and digital tools across business units.</li>
+                                            <li>Coordinated stakeholders across 30+ markets to support adoption and execution.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="w-full h-px bg-white/10 mt-8"></div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] opacity-10 pointer-events-none" style="background-image: radial-gradient(circle, #333 1px, transparent 1px); background-size: 40px 40px;"></div>
+            </section>
+
+            <section id="perspectives" class="py-32 px-6 relative">
+                <div class="absolute inset-0 spotlight-grid opacity-10 pointer-events-none"></div>
+                <div class="container mx-auto relative z-10">
+                    <div class="max-w-4xl mx-auto reveal">
+                        <p class="text-xs uppercase tracking-[0.42em] text-[#FF4500] mb-8 text-center">Perspective</p>
+                        <h2 class="text-4xl md:text-6xl font-serif text-white/90 leading-tight mb-10 text-center">
+                            Visibility drives execution.
+                        </h2>
+
+                        <div class="max-w-3xl mx-auto space-y-8 text-lg md:text-[1.35rem] leading-[1.8] text-gray-300 mb-16">
+                            <p>
+                                In large-scale FMCG operations, the biggest constraint is rarely strategy, it is visibility.
+                                When thousands of daily decisions across sales, distribution, and service are made with incomplete or delayed information,
+                                even the best plans struggle to translate into execution.
+                            </p>
+                            <p>
+                                Digital transformation, for me, is not just about new tools, but about making operations measurable,
+                                connected, and responsive in real time.
+                            </p>
+                        </div>
+
+                        <div class="max-w-5xl mx-auto border-t border-white/10 pt-8 reveal" style="transition-delay: 120ms;">
+                            <p class="text-xl text-[#FF4500] mb-6 font-medium">Core Idea</p>
+
+                            <div class="rounded-[1.5rem] border border-white/10 bg-white/[0.04] backdrop-blur-sm overflow-hidden">
+                                <article class="perspective-item border-b border-white/10">
+                                    <button class="perspective-toggle w-full flex items-center justify-between gap-6 px-6 md:px-8 py-6 text-left" type="button" aria-expanded="true">
+                                        <div>
+                                            <h3 class="font-serif text-2xl md:text-[2rem] text-white">In Practice <span class="font-sans text-sm md:text-base text-gray-500">(AB InBev)</span></h3>
+                                        </div>
+                                        <span class="text-white/60 text-2xl leading-none transition-transform duration-300">⌃</span>
+                                    </button>
+                                    <div class="perspective-panel px-6 md:px-8 pb-8 text-gray-400 text-base md:text-lg leading-8">
+                                        <p class="mb-6">
+                                            This is the problem I have worked on at AB InBev, within Drinks Dispense operations in the UK&amp;I.
+                                            The function had recently been brought in-house and lacked a unified view of performance across installations,
+                                            capital expenditure, and field operations.
+                                        </p>
+                                        <p class="mb-6">
+                                            I led the development of automated data pipelines and Power BI dashboards that integrated previously fragmented
+                                            data sources, enabling leadership to track key operational and financial metrics with far greater speed and accuracy.
+                                        </p>
+                                        <p>
+                                            Building on this foundation, I focused on improving execution on the ground. I designed and implemented a route
+                                            optimisation tool for a field force of over 150 technicians, improving productivity and resource allocation. I also
+                                            led the development of DraftVision, a digital platform that replaced manual, unstructured communication with a
+                                            standardized workflow for service and installation requests. This not only reduced inefficiencies but also created a
+                                            structured data layer that allowed us to generate insights and unlock new revenue opportunities.
+                                        </p>
+                                    </div>
+                                </article>
+
+                                <article class="perspective-item border-b border-white/10">
+                                    <button class="perspective-toggle w-full flex items-center justify-between gap-6 px-6 md:px-8 py-6 text-left" type="button" aria-expanded="false">
+                                        <div>
+                                            <h3 class="font-serif text-2xl md:text-[2rem] text-white">Foundation <span class="font-sans text-sm md:text-base text-gray-500">(Skills &amp; Approach)</span></h3>
+                                        </div>
+                                        <span class="text-white/60 text-2xl leading-none transition-transform duration-300">⌄</span>
+                                    </button>
+                                    <div class="perspective-panel hidden px-6 md:px-8 pb-8 text-gray-400 text-base md:text-lg leading-8">
+                                        <p>
+                                            Alongside my professional experience, my MSc in Business Analytics and Big Data at IE University has strengthened
+                                            my ability to work across the full data value chain, from building pipelines in Python and SQL to translating
+                                            outputs into clear, actionable insights for business stakeholders.
+                                        </p>
+                                    </div>
+                                </article>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="py-32 px-6">
+                <div class="container mx-auto">
+                    <div class="max-w-4xl mx-auto reveal rounded-[2rem] border border-white/10 bg-white/[0.03] backdrop-blur-sm p-10 md:p-16 text-center">
+                        <p class="text-sm uppercase tracking-[0.4em] text-[#FF4500] mb-6">NEXT</p>
+                        <h2 class="font-serif text-4xl md:text-6xl leading-tight mb-8">
+                            Applying this at scale
+                        </h2>
+                        <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-10 leading-8">
+                            What draws me to opportunities like ECCBC is the ability to apply this approach at scale.
+                            Operating across multiple markets requires not only robust systems, but also adaptable, insight-driven
+                            processes that improve execution in diverse environments. I'm particularly interested in roles that
+                            enhance route-to-market effectiveness, improve operational visibility, and support faster,
+                            better-informed decisions across the value chain.
+                        </p>
+                        <div class="flex flex-col items-center gap-4">
+                            <a href="https://www.linkedin.com/in/sumant-duggal/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 rounded-full text-sm font-medium bg-[#FF4500] text-black hover:scale-105 transition-transform duration-300">
+                                LETS CONNECT
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <script>
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+        const nav = document.getElementById('main-nav');
+        const heroWrapper = document.getElementById('hero-content-wrapper');
+        const parallaxUpCards = document.querySelectorAll('.parallax-card-up');
+        const parallaxDownCards = document.querySelectorAll('.parallax-card-down');
+        const perspectiveToggles = document.querySelectorAll('.perspective-toggle');
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        function handleScrollEffects() {
+            const scrolled = window.scrollY;
+
+            if (scrolled > 50) {
+                nav.classList.add('py-4', 'bg-[#050505]/80', 'backdrop-blur-md', 'border-b', 'border-white/5');
+                nav.classList.remove('py-8', 'bg-transparent');
+            } else {
+                nav.classList.remove('py-4', 'bg-[#050505]/80', 'backdrop-blur-md', 'border-b', 'border-white/5');
+                nav.classList.add('py-8', 'bg-transparent');
+            }
+
+            if (reducedMotion.matches) {
+                return;
+            }
+
+            parallaxUpCards.forEach((el) => {
+                el.style.setProperty('--scroll-offset-up', `${scrolled * -0.05}px`);
+            });
+
+            parallaxDownCards.forEach((el) => {
+                el.style.setProperty('--scroll-offset-down', `${scrolled * 0.05}px`);
+            });
+
+            if (scrolled < 1000) {
+                heroWrapper.style.transform = `translateY(${scrolled * 0.4}px)`;
+                heroWrapper.style.opacity = Math.max(0, 1 - scrolled / 600);
+            } else {
+                heroWrapper.style.opacity = 0;
+            }
+        }
+        handleScrollEffects();
+
+        perspectiveToggles.forEach((toggle) => {
+            toggle.addEventListener('click', () => {
+                const item = toggle.closest('.perspective-item');
+                const panel = item.querySelector('.perspective-panel');
+                const icon = toggle.querySelector('span:last-child');
+                const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+
+                perspectiveToggles.forEach((otherToggle) => {
+                    const otherItem = otherToggle.closest('.perspective-item');
+                    const otherPanel = otherItem.querySelector('.perspective-panel');
+                    const otherIcon = otherToggle.querySelector('span:last-child');
+                    otherToggle.setAttribute('aria-expanded', 'false');
+                    otherPanel.classList.add('hidden');
+                    otherIcon.textContent = '⌄';
+                });
+
+                if (!isOpen) {
+                    toggle.setAttribute('aria-expanded', 'true');
+                    panel.classList.remove('hidden');
+                    icon.textContent = '⌃';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
